@@ -8,12 +8,16 @@ pip_packages = ['flask', 'Flask-PyMongo']
 
 
 def install_apt():
-    p = subprocess.Popen(['sudo', 'apt-get', 'install','-y'].extend(apt_packages))
+    cmd = ['sudo', 'apt-get', 'install','-y']
+    cmd.extend(apt_packages)
+    p = subprocess.Popen(cmd)
     p.communicate()
 
 
 def install_pip():
-    p = subprocess.Popen(['sudo', 'pip', 'install','-y'].extend(pip_packages))
+    cmd = ['sudo', 'pip', 'install','-y'];
+    cmd.extend(pip_packages)
+    p = subprocess.Popen(cmd)
     p.communicate()
 
 install_apt()
