@@ -22,5 +22,10 @@ def index(name=None):
     print user
     return render_template('index.html', name=user['power'])
 
+@app.route('/clear')
+def clear(name=None):
+    mongo.db.user.remove()
+    return 'clear'
+
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
