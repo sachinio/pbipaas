@@ -15,10 +15,11 @@ def install_apt():
 
 
 def install_pip():
-    cmd = ['sudo', 'pip', 'install','-y'];
-    cmd.extend(pip_packages)
-    p = subprocess.Popen(cmd)
-    p.communicate()
+    for pack in pip_packages:
+        cmd = ['sudo', 'pip', 'install', pack]
+        cmd.extend(pip_packages)
+        p = subprocess.Popen(cmd)
+        p.communicate()
 
 install_apt()
 install_pip()
