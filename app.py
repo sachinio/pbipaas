@@ -11,16 +11,19 @@ from flask.ext.pymongo import PyMongo
 app = Flask(__name__)
 mongo = PyMongo(app)
 
+
 @app.route('/add/<name>')
 def add(name=None):
     print mongo.db.user.insert_one({'name': name, 'power':'unknown power'})
     return 'ok'
+
 
 @app.route('/hello/<name>')
 def index(name=None):
     user = mongo.db.user.find_one_or_404({'name': name})
     print user
     return render_template('index.html', name=user['power'])
+
 
 @app.route('/clear')
 def clear(name=None):
